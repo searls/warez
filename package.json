@@ -1,0 +1,9 @@
+{
+  "name": "warez",
+  "version": "0.0.1",
+  "description": "Detects which input devices are being used",
+  "main": "index.js",
+  "keywords": ["Apple Pencil", "hardware detection", "stylus", "pointer event"],
+  "author": "Justin Searls <searls@gmail.com>",
+  "license": "MIT"
+}

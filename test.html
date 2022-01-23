@@ -1,0 +1,34 @@
+<label for="current">Current</label>
+<input id="current"/>
+<br/>
+<label for="all">All devices:</label>
+<textarea id="all" rows=8></textarea>
+<br/>
+<label for="scratch">Just a text area:</label>
+<textarea id="scratch" rows=8></textarea>
+<br/>
+
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+<script>
+  window.module = {}
+</script>
+<script src="index.js"></script>
+<script>
+  warez = module.exports
+
+  warez.start()
+
+  document.querySelector('#start').addEventListener('click', (e) => {
+    warez.start()
+  })
+  document.querySelector('#stop').addEventListener('click', (e) => {
+    warez.stop()
+  })
+
+  setInterval(() => {
+    document.querySelector('#current').value = warez.currentDevice()
+    document.querySelector('#all').value = warez.allDevices().join('\n')
+  }, 500)
+</script>
