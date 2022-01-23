@@ -49,4 +49,4 @@ And that's pretty much it.
 
 Here's a little demo of the [test page](/test.html) included in this repo:
 
-<img src="https://user-images.githubusercontent.com/79303/150662901-e1a0810f-afa3-4259-8127-1935c2e96616.gif" width="100%"/>
+<img src="https://user-images.githubusercontent.com/79303/150662901-e1a0810f-afa3-4259-8127-1935c2e96616.gif" width="60%"/>
