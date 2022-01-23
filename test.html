@@ -1,34 +1,54 @@
 <label for="current">Current</label>
+<br/>
 <input id="current"/>
 <br/>
 <label for="all">All devices:</label>
+<br/>
 <textarea id="all" rows=8></textarea>
 <br/>
 <label for="scratch">Just a text area:</label>
+<br/>
 <textarea id="scratch" rows=8></textarea>
 <br/>
 
 <button id="start">Start</button>
 <button id="stop">Stop</button>
+<br/>
+Change events:
+<pre id="changes">
+</pre>
+
 
 <script>
   window.module = {}
 </script>
 <script src="index.js"></script>
 <script>
+  function monitorChanges (e) {
+    document.querySelector('#changes').textContent = `
+      ${e.previous} 🔜 ${e.current}
+      ${document.querySelector('#changes').textContent}
+    `
+  }
+
   warez = module.exports
 
   warez.start()
+  warez.onDeviceChange(monitorChanges)
 
   document.querySelector('#start').addEventListener('click', (e) => {
     warez.start()
+    warez.onDeviceChange(monitorChanges)
   })
   document.querySelector('#stop').addEventListener('click', (e) => {
     warez.stop()
+    warez.removeDeviceChangeHandler(monitorChanges)
   })
+
 
   setInterval(() => {
     document.querySelector('#current').value = warez.currentDevice()
     document.querySelector('#all').value = warez.allDevices().join('\n')
   }, 500)
 </script>
+

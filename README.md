@@ -1,4 +1,13 @@
-# warez - what hardware is being used right now?
+```
+ __     __     ______     ______     ______     ______
+/\ \  _ \ \   /\  __ \   /\  == \   /\  ___\   /\___  \
+\ \ \/ ".\ \  \ \  __ \  \ \  __<   \ \  __\   \/_/  /__
+ \ \__/".~\_\  \ \_\ \_\  \ \_\ \_\  \ \_____\   /\_____\
+  \/_/   \/_/   \/_/\/_/   \/_/ /_/   \/_____/   \/_____/
+==========INPUT=HARDWARE=DETECTION=FOR=JAVASCRIPT========
+```
+
+# warez - what hardware is the user interacting with right now?
 
 Sometimes it makes sense for a user interface to adapt to the input device being
 used. For example, in my app [KameSame](https://kamesame.com) I wanted to expand
@@ -23,6 +32,8 @@ whatever.
 
 ## Usage
 
+### Monitoring input
+
 The package offers `start()` and `stop()` functions that govern whether user
 interactions are being actively monitored. If you intend to track the current
 input device, just kick things off with:
@@ -30,6 +41,14 @@ input device, just kick things off with:
 ```js
 warez.start()
 ```
+
+And you can remove the event handlers with:
+
+```js
+warez.stop()
+```
+
+### Querying input device information
 
 If you want to know the most recently used input device, you can call:
 
@@ -40,10 +59,32 @@ warez.currentDevice() // will be 'pen', 'keyboard', touch', or 'mouse'
 And if you call:
 
 ```js
-warez.allDevices() // an array of one or more input types
+warez.allDevices() // an array of one or more of the above input types
 ```
 
-And that's pretty much it.
+### Be notified when the current device changes
+
+You can also register an event handler to respond whenever the input device
+currently being used by the user changes:
+
+```js
+warez.onDeviceChange(e => {
+  console.log('Now using device', e.current)
+  console.log('Previous device was', e.previous)
+
+  // You might update any nodes in the DOM whose CSS styles ought to reflect
+  // the current input device with something like this:
+  document.querySelectorAll('[data-warez]').forEach(node => {
+    node.setAttribute('data-warez', e.current)
+  })
+})
+```
+
+If you want to remove the handler, you can pass a reference to the function:
+
+```js
+warez.removeDeviceChangeHandler(yourHandlerFunction)
+```
 
 ## Demo
 
