@@ -1,3 +1,5 @@
+# warez
+
 ```
  __     __     ______     ______     ______     ______
 /\ \  _ \ \   /\  __ \   /\  == \   /\  ___\   /\___  \
@@ -6,8 +8,6 @@
   \/_/   \/_/   \/_/\/_/   \/_/ /_/   \/_____/   \/_____/
 ==========INPUT=HARDWARE=DETECTION=FOR=JAVASCRIPT========
 ```
-
-# warez - what hardware is the user interacting with right now?
 
 Sometimes it makes sense for a user interface to adapt to the input device being
 used. For example, in my app [KameSame](https://kamesame.com) I wanted to expand
